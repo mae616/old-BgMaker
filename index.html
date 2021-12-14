@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Bg Maker</title>
+	<link rel="stylesheet" href="./style.css">
+	<script type="text/javascript" src="./main.js"></script>
+</head>
+
+<body>
+	<canvas id="bg"></canvas>
+	<div id="body">
+		<header>
+			<h1><strong>Bg</strong> Maker</h1>
+		</header>
+		<section>
+			<article>
+				<div id="bg_make">
+					h<input type="number" id="tHeight" class="t_color" size="3" maxlength="3" min="1" max="200"
+						value="150" onblur="chgSize()">
+					×w<input type="number" id="tWidth" class="t_color" size="3" maxlength="3" min="1" max="200"
+						value="150" onblur="chgSize()"><br>
+					<button onClick="draw()">画像の更新</button><br>
+					<canvas id="bg_pattern" width="150px" height="150px" onClick="draw()"></canvas>
+				</div>
+				<div id="bg_info">
+					<h3>背景</h3>
+					<div class="info">
+						<div class="name">
+							<input type="color" id="bgColorCanvas" class="c_color" onblur="chgColorCode(this)">
+						</div>
+						<div class="content">
+							<input type="text" id="bgColor" class="t_color" onblur="chgColor(this)" maxlength="7"
+								pattern="#[0-9a-fA-F]{6}" placeholder="#000000">
+						</div>
+					</div>
+					<h3>柄</h3>
+					<div class="info">
+						<div class="name">
+							<input type="color" id="ptColorCanvas" class="c_color" onblur="chgColorCode(this)">
+						</div>
+						<div class="content">
+							<input type="text" id="ptColor" class="t_color" onblur="chgColor(this)" maxlength="7"
+								pattern="#[0-9a-fA-F]{6}" placeholder="#FFFFFF">
+						</div>
+					</div>
+					<div class="info">
+						<div class="name">
+							模様
+						</div>
+						<div class="content">
+							<select name="pattern_type" id="pattern_type">
+								<option value="stripe_tate">縞々(縦)</option>
+								<option value="stripe_yoko">縞々(横)</option>
+								<option value="stripe">縞々(斜め)</option>
+								<option value="dot">水玉</option>
+								<option value="star">星</option>
+								<option value="flower">花</option>
+							</select>
+						</div>
+					</div>
+					<div class="info">
+						<div class="name">
+							頂点
+						</div>
+						<div class="content">
+							<input type="number" id="ptSides" class="t_color" size="2" maxlength="2" value="5" min="3"
+								max="15">
+						</div>
+					</div>
+					<div class="info">
+						<div class="name">
+							大きさ
+						</div>
+						<div class="content">
+							<input type="number" id="ptSize" class="t_color" size="2" maxlength="2" value="20" min="1"
+								max="99">
+						</div>
+					</div>
+					<div class="info">
+						<div class="name">
+							個数
+						</div>
+						<div class="content">
+							<select name="pattern_variation" id="pattern_variation">
+								<option value="1">1つ</option>
+								<option value="2">2つ</option>
+								<option value="3">3つ</option>
+							</select>
+						</div>
+					</div>
+					<br><br>
+					<div class="info">
+						<button onClick="setBackground()">繰り返しプレビュー</button>
+					</div>
+				</div>
+				<div id="bg_button">
+					<h3>配色ツール</h3>
+					<div class="info">
+						<button onClick="randomColorCode()">ランダム配色</button>
+						<br>
+						<button onClick="replaceColorCode()">背景色と柄色の交換</button>
+					</div>
+					<h3>ダウンロード</h3>
+					<div class="info">
+						<button onClick="downloadPng()">画像のダウンロード</button><br>
+						<br>
+						<button onClick="downloadChgSizePng()">サイズを指定して画像のダウンロード</button><br>
+						h<input type="number" id="dHeight" class="t_color" size="3" maxlength="3" min="1" max="999">
+						×w<input type="number" id="dWidth" class="t_color" size="3" maxlength="3" min="1" max="999">
+					</div>
+				</div>
+			</article>
+		</section>
+	</div>
+</body>
+
+</html>
